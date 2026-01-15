@@ -5,6 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light" />
   <title>Dental Cart</title>
+  <link id="favicon" rel="icon" type="image/svg+xml" />
+  <meta name="google-site-verification" content="LafDgouJAxGdO2Baf4oCW9LwphxpCnVDdX90hA50F7I" />
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="" id="seoDescription" />
+  <meta name="keywords" content="" id="seoKeywords" />
+  <meta name="author" content="" id="seoAuthor" />
+  <meta property="og:title" content="" id="ogTitle" />
+  <meta property="og:description" content="" id="ogDescription" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="" id="ogUrl" />
+  <meta property="og:image" content="" id="ogImage" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="" id="twitterTitle" />
+  <meta name="twitter:description" content="" id="twitterDescription" />
+  <meta name="twitter:image" content="" id="twitterImage" />
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json" id="structuredData"></script>
   <style>
     :root{
       --bg:#0b1220;
@@ -49,12 +68,9 @@
 
     .top-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
 
-    .pill{border:1px solid rgba(255,255,255,.10);background: rgba(18,31,59,.75);color:var(--text);border-radius:999px;padding:10px 12px;display:flex;align-items:center;gap:8px;box-shadow: 0 8px 22px rgba(0,0,0,.25)}
-    .pill button{border:0;background:transparent;color:inherit;cursor:pointer;padding:6px 10px;border-radius:999px;font-weight:800}
-    .pill button[aria-pressed="true"]{background: rgba(255,255,255,.10)}
-
     .nav-btn{border:1px solid rgba(255,255,255,.10);background: rgba(18,31,59,.55);color:var(--text);padding:10px 12px;border-radius: 999px;cursor:pointer;font-weight:800}
     .nav-btn:hover{border-color: rgba(255,255,255,.22)}
+    .nav-btn[aria-selected="true"]{border-color: rgba(77,212,172,.55); background: rgba(77,212,172,.12)}
 
     .hero{margin-top:18px;background: linear-gradient(135deg, rgba(18,31,59,.72), rgba(15,27,51,.55));border:1px solid rgba(255,255,255,.08);border-radius: var(--radius);box-shadow: var(--shadow);padding:28px;overflow:hidden;position:relative}
     .hero:after{content:"";position:absolute;inset:-40px -60px auto auto;width:420px;height:420px;border-radius:50%;background: radial-gradient(circle at 30% 30%, rgba(77,212,172,.45), transparent 60%),radial-gradient(circle at 70% 70%, rgba(122,168,255,.35), transparent 55%);filter: blur(10px);opacity:.75;pointer-events:none}
@@ -83,10 +99,6 @@
 
     .field{display:flex;gap:10px;align-items:center;background: rgba(18,31,59,.65);border:1px solid rgba(255,255,255,.10);border-radius: 14px;padding: 10px 12px;min-width: 240px}
     .field input{width: 100%;border:0;outline:none;background:transparent;color:var(--text)}
-
-    .seg{display:flex;gap:8px;flex-wrap:wrap}
-    .seg button{border:1px solid rgba(255,255,255,.10);background: rgba(18,31,59,.55);color:var(--text);padding:9px 12px;border-radius: 999px;cursor:pointer;font-weight:900;font-size: 13px}
-    .seg button[aria-selected="true"]{border-color: rgba(77,212,172,.55); background: rgba(77,212,172,.12)}
 
     .grid{margin-top:16px;display:grid;grid-template-columns: repeat(3, 1fr);gap:14px}
     @media (max-width: 1000px){.grid{grid-template-columns: repeat(2, 1fr)}}
@@ -140,12 +152,6 @@
     .review-item .name{font-weight:950}
     .review-item .sub{color:var(--muted);font-size: 13px;line-height:1.35}
 
-    .rtl{direction:rtl}
-    .rtl .header-inner{flex-direction: row-reverse}
-    .rtl .top-actions{flex-direction: row-reverse}
-    .rtl .drawer{right:auto;left:0;border-left:0;border-right:1px solid rgba(255,255,255,.10);box-shadow: 18px 0 55px rgba(0,0,0,.45)}
-    .rtl .fab{right:auto;left:18px}
-
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
   </style>
 </head>
@@ -160,10 +166,6 @@
       <div class="top-actions">
         <button class="nav-btn" id="navCatalog" type="button"></button>
         <button class="nav-btn" id="navReview" type="button"></button>
-
-        <div class="pill" role="group" aria-label="Language">
-          <button id="langEn" type="button" aria-pressed="true">EN</button>
-        </div>
       </div>
     </div>
   </header>
@@ -209,7 +211,7 @@
             <input id="searchInput" type="search" />
           </div>
 
-          <div class="seg" id="categorySeg" role="tablist" aria-label="Categories"></div>
+          <div id="categorySeg" role="tablist" aria-label="Categories" style="display:flex;gap:8px;flex-wrap:wrap"></div>
         </div>
       </div>
 
@@ -268,7 +270,6 @@
   <script>
     (function(){
       const STORAGE_KEY = "dental_cart_v1";
-      const LANG_KEY = "dental_lang_v1";
       const CLINIC_KEY = "dental_clinic_v1";
 
       const el = (id) => document.getElementById(id);
@@ -402,11 +403,15 @@
       }
 
       function productName(p){
-        return state.lang === "ar" ? safeText(p.name_ar || p.name_en) : safeText(p.name_en || p.name_ar);
+        return safeText(p.name_en);
+      }
+
+      function productAltText(p){
+        return safeText(p.alt_text || productName(p));
       }
 
       function productDesc(p){
-        return state.lang === "ar" ? safeText(p.description_ar || p.description_en) : safeText(p.description_en || p.description_ar);
+        return safeText(p.description_en);
       }
 
       function loadCart(){
@@ -505,6 +510,8 @@
         for (const cat of list){
           const btn = document.createElement("button");
           btn.type = "button";
+          btn.className = "nav-btn";
+          btn.style.fontSize = "13px";
           btn.textContent = (cat === "All") ? t("category_all") : cat;
           btn.setAttribute("role", "tab");
           btn.setAttribute("aria-selected", String(state.category === cat));
@@ -537,7 +544,7 @@
           card.className = "card";
 
           const img = document.createElement("img");
-          img.alt = productName(p);
+          img.alt = productAltText(p);
           img.src = safeText(p.image);
           card.appendChild(img);
 
@@ -580,7 +587,7 @@
           grid.appendChild(card);
         }
 
-        el("catalogSubtitle").textContent = items.length ? "" : (state.lang === "ar" ? "لا توجد نتائج." : "No results.");
+        el("catalogSubtitle").textContent = items.length ? "" : "No results.";
       }
 
       function renderCartDrawer(){
@@ -607,7 +614,7 @@
           wrap.className = "cart-item";
 
           const img = document.createElement("img");
-          img.alt = productName(p);
+          img.alt = productAltText(p);
           img.src = safeText(p.image);
 
           const right = document.createElement("div");
@@ -666,7 +673,7 @@
 
           const ta = document.createElement("textarea");
           ta.value = safeText(it.note);
-          ta.placeholder = state.lang === "ar" ? "مثال: اللون/المقاس/تفاصيل مطلوبة" : "Example: shade/size/required details";
+          ta.placeholder = "Example: shade/size/required details";
           ta.addEventListener("input", () => setNote(id, ta.value));
 
           right.appendChild(row1);
@@ -715,9 +722,7 @@
           const sub = document.createElement("div");
           sub.className = "sub";
           const note = safeText(it.note).trim();
-          sub.textContent = (state.lang === "ar")
-            ? ("الكمية: " + it.qty + (note ? (" | ملاحظة: " + note) : ""))
-            : ("Qty: " + it.qty + (note ? (" | Note: " + note) : ""));
+          sub.textContent = "Qty: " + it.qty + (note ? (" | Note: " + note) : "");
 
           left.appendChild(name);
           left.appendChild(sub);
@@ -729,7 +734,7 @@
           const btnEdit = document.createElement("button");
           btnEdit.className = "icon-btn";
           btnEdit.type = "button";
-          btnEdit.textContent = state.lang === "ar" ? "تعديل" : "Edit";
+          btnEdit.textContent = "Edit";
           btnEdit.addEventListener("click", openDrawer);
 
           right.appendChild(btnEdit);
@@ -740,23 +745,23 @@
           lines += 1;
         }
 
-        el("reviewCount").textContent = state.lang === "ar" ? ("عدد المنتجات: " + lines) : ("Items: " + lines);
+        el("reviewCount").textContent = "Items: " + lines;
         el("btnSendWhatsApp").disabled = false;
       }
 
       function buildWhatsAppMessage(){
         const msgCfg = state.config?.params?.message || {};
 
-        const greeting = state.lang === "ar" ? safeText(msgCfg.greeting_ar) : safeText(msgCfg.greeting_en);
-        const intro = state.lang === "ar" ? safeText(msgCfg.intro_ar) : safeText(msgCfg.intro_en);
-        const footer = state.lang === "ar" ? safeText(msgCfg.footer_ar) : safeText(msgCfg.footer_en);
+        const greeting = safeText(msgCfg.greeting_en);
+        const intro = safeText(msgCfg.intro_en);
+        const footer = safeText(msgCfg.footer_en);
 
         const clinic = safeText(el("clinicName").value).trim();
 
         const parts = [];
         if (greeting) parts.push(greeting);
         if (clinic){
-          parts.push(state.lang === "ar" ? ("اسم العيادة: " + clinic) : ("Clinic: " + clinic));
+          parts.push("Clinic: " + clinic);
         }
         if (intro) parts.push(intro);
 
@@ -767,7 +772,7 @@
           if (!p) continue;
           const it = state.cart[id];
           const note = safeText(it.note).trim();
-          const line = "- " + productName(p) + " x" + it.qty + (note ? (state.lang === "ar" ? (" | ملاحظة: " + note) : (" | Note: " + note)) : "");
+          const line = "- " + productName(p) + " x" + it.qty + (note ? (" | Note: " + note) : "");
           parts.push(line);
         }
 
@@ -783,15 +788,85 @@
         window.open(url, "_blank", "noopener,noreferrer");
       }
 
+      function applyStructuredData(){
+        const seo = state.config?.params?.seo || {};
+        const products = state.config?.params?.products || [];
+        
+        const structuredData = {
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "name": seo.business_name || "Dental Cart",
+          "description": seo.description || "Dental supplies ordering platform",
+          "url": seo.site_url,
+          "telephone": seo.business_phone,
+          "email": seo.business_email,
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": seo.business_address
+          },
+          "openingHours": seo.business_hours,
+          "areaServed": seo.service_area,
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Dental Supplies Catalog",
+            "itemListElement": products.map((p, index) => ({
+              "@type": "Offer",
+              "position": index + 1,
+              "itemOffered": {
+                "@type": "Product",
+                "name": productName(p),
+                "description": productDesc(p),
+                "category": safeText(p.category),
+                "image": safeText(p.image)
+              }
+            }))
+          }
+        };
+
+        const structuredDataEl = el("structuredData");
+        structuredDataEl.textContent = JSON.stringify(structuredData, null, 2);
+      }
+
       function applyLanguage(){
         document.documentElement.lang = state.lang;
-        document.body.classList.toggle("rtl", state.lang === "ar");
-
-        el("langEn").setAttribute("aria-pressed", String(state.lang === "en"));
-        el("langAr").setAttribute("aria-pressed", String(state.lang === "ar"));
-
         el("brandText").textContent = t("brand");
         document.title = t("brand");
+
+        // Apply favicon from config
+        const favicon = safeText(state.config?.params?.favicon);
+        if (favicon) {
+          const faviconEl = el("favicon");
+          faviconEl.href = favicon;
+        }
+
+        // Apply SEO meta tags
+        const seo = state.config?.params?.seo || {};
+        if (seo.title) {
+          document.title = seo.title;
+          el("ogTitle").content = seo.title;
+          el("twitterTitle").content = seo.title;
+        }
+        if (seo.description) {
+          el("seoDescription").content = seo.description;
+          el("ogDescription").content = seo.description;
+          el("twitterDescription").content = seo.description;
+        }
+        if (seo.main_keywords) {
+          el("seoKeywords").content = seo.main_keywords;
+        }
+        if (seo.author) {
+          el("seoAuthor").content = seo.author;
+        }
+        if (seo.site_url) {
+          el("ogUrl").content = seo.site_url;
+        }
+        if (favicon) {
+          el("ogImage").content = favicon;
+          el("twitterImage").content = favicon;
+        }
+
+        // Apply structured data
+        applyStructuredData();
 
         el("headline").textContent = t("headline");
         el("vpFast").textContent = t("value_fast");
@@ -810,35 +885,24 @@
         el("cartTitle").textContent = t("cart_title");
         el("btnContinue").textContent = t("continue_shopping");
         el("btnGoToReview").textContent = t("nav_review");
-        el("cartFootHint").textContent = state.lang === "ar" ? "أضف ملاحظة لكل منتج عند الحاجة." : "Add a note per product if needed.";
+        el("cartFootHint").textContent = "Add a note per product if needed.";
 
         el("reviewTitle").textContent = t("review_title");
         el("reviewHint").textContent = t("review_hint");
         el("btnBackToCatalog").textContent = t("back");
         el("clinicLabel").textContent = t("clinic_name_label");
-        el("clinicName").placeholder = state.lang === "ar" ? "مثال: عيادة النور" : "Example: Noor Dental Clinic";
+        el("clinicName").placeholder = "Example: Noor Dental Clinic";
         el("btnSendWhatsApp").textContent = t("send_whatsapp");
 
-        el("landingHint").textContent = state.lang === "ar"
-          ? "لا يلزم إنشاء حساب. سيتم إرسال الطلب عبر واتساب في الخطوة الأخيرة."
-          : "No account needed. Your order will be sent via WhatsApp in the final step.";
+        el("landingHint").textContent = "No account needed. Your order will be sent via WhatsApp in the final step.";
 
-        el("flowTitle").textContent = state.lang === "ar" ? "الخطوات" : "Workflow";
-        el("flowText").textContent = state.lang === "ar"
-          ? "تصفح حسب الفئة، أضف المنتجات، أضف ملاحظة لكل منتج، ثم أرسل الطلب عبر واتساب."
-          : "Browse by category, add items, add a note per product, then send the order via WhatsApp.";
+        el("flowTitle").textContent = "Workflow";
+        el("flowText").textContent = "Browse by category, add items, add a note per product, then send the order via WhatsApp.";
 
         renderCategorySeg();
         renderProducts();
         renderCartDrawer();
         renderReview();
-      }
-
-      function setLanguage(lang){
-        state.lang = "en";
-        localStorage.setItem(LANG_KEY, state.lang);
-        el("langEn").setAttribute("aria-pressed", "true");
-        applyLanguage();
       }
 
       function bindEvents(){
@@ -862,8 +926,6 @@
           renderProducts();
         });
 
-        el("langEn").addEventListener("click", (e) => { e.stopPropagation(); setLanguage("en"); });
-
         el("clinicName").addEventListener("input", () => {
           localStorage.setItem(CLINIC_KEY, el("clinicName").value);
         });
@@ -878,7 +940,6 @@
         state.cart = loadCart();
         normalizeCart();
 
-        const savedLang = safeText(localStorage.getItem(LANG_KEY)).toLowerCase();
         const savedClinic = safeText(localStorage.getItem(CLINIC_KEY));
         if (savedClinic) el("clinicName").value = savedClinic;
 
@@ -886,7 +947,6 @@
         if (!state.config.params) state.config.params = {};
         if (!Array.isArray(state.config.params.products)) state.config.params.products = [];
 
-        const defaultLang = safeText(state.config.params.default_language || "en");
         state.lang = "en";
 
         state.productsById = new Map();
