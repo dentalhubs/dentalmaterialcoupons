@@ -1,4 +1,4 @@
-baseURL = "https://USERNAME.github.io/REPO/"
+baseURL = "https://dentalhubs.github.io/dentalmaterialcoupons/"
 languageCode = "en"
 title = "Dental Supplies Order"
 disableKinds = ["taxonomy", "term", "RSS", "sitemap", "robotsTXT", "404"]
@@ -8,7 +8,7 @@ whatsapp_phone = "201271476215"
 default_language = "en"
 supported_languages = ["en"]
 favicon = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIGZpbGw9IiMwZjFiMzMiLz48dGV4dCB4PSIxNiIgeT0iMjAiIHN0eWxlPSJmb250LWZhbWlseTogQXJpYWwsIHNhbnMtc2VyaWY7Zm9udC1zaXplOjE4cHg7ZmlsbDojNGRkNGFjO3RleHQtYW5jaG9yOm1pZGRsZTtkb21pbmFudC1iYXNlbGluZTphdXRvIj7wnrE8L3RleHQ+PC9zdmc+"
-google_search_console = "cSnxXS0EcccAyKzq8E047INHkf2HebU1PY-FOSohoJg"
+google_search_console = "LafDgouJAxGdO2Baf4oCW9LwphxpCnVDdX90hA50F7I"
 
 # SEO Configuration
 [params.seo]
@@ -16,7 +16,7 @@ title = "Dental Material Coupons - Order Dental Supplies Online | Fast Delivery"
 description = "Order dental supplies easily with no registration required. Diagnostic, restorative, sterilization, and photography products for dentists. Fast WhatsApp ordering."
 main_keywords = "dental supplies, dentist equipment, dental products, dental cart, order dental supplies, dental instruments, dental materials, dental clinic supplies, dental consumables, dental diagnostic tools, restorative dental materials, dental sterilization, dental photography equipment"
 author = "Dental Material Coupons"
-site_url = "https://USERNAME.github.io/REPO/"
+site_url = "https://USERNAME.github.io/cart-pro-max/"
 local_business_type = "HealthAndBeautyBusiness"
 business_name = "Dental Cart"
 business_phone = "+201271476215"
@@ -138,5 +138,4 @@ name_en = "Intraoral Mirrors (Set)"
 description_en = "Rhodium-coated mirrors for crisp reflection and color accuracy in photos."
 alt_text = "Intraoral Mirrors Set - Rhodium-coated mirrors for crisp reflection and color accuracy in dental photography"
 image = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgNjQwIDQwMCI+PHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0MDAiIGZpbGw9IiNGRkVGRjEiLz48Y2lyY2xlIGN4PSIzMDAiIGN5PSIxNzAiIHI9Ijg4IiBmaWxsPSIjRkZGIiBzdHJva2U9IiM4MDAwMjAiIHN0cm9rZS13aWR0aD0iMTYiLz48cGF0aCBkPSJNMzk0IDI0MiBsOTQgNjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzgwMDAyMCIgc3Ryb2tlLXdpZHRoPSIxNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHRleHQgeD0iMzIiIHk9IjM2OCIgc3R5bGU9ImZvbnQtZmFtaWx5OiBBcmlhbCwgc2Fucy1zZXJpZjtmb250LXNpemU6MjRweDtmaWxsOiM4MDAwMjAiPlBob3RvZ3JhcGh5PC90ZXh0Pjwvc3ZnPg=="
-
 
