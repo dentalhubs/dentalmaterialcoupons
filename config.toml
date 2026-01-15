@@ -10,6 +10,36 @@ supported_languages = ["en"]
 favicon = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIGZpbGw9IiMwZjFiMzMiLz48dGV4dCB4PSIxNiIgeT0iMjAiIHN0eWxlPSJmb250LWZhbWlseTogQXJpYWwsIHNhbnMtc2VyaWY7Zm9udC1zaXplOjE4cHg7ZmlsbDojNGRkNGFjO3RleHQtYW5jaG9yOm1pZGRsZTtkb21pbmFudC1iYXNlbGluZTphdXRvIj7wnrE8L3RleHQ+PC9zdmc+"
 google_search_console = ""
 
+# SEO Configuration
+[params.seo]
+title = "Dental Cart - Order Dental Supplies Online | Fast Delivery"
+description = "Order dental supplies easily with no registration required. Diagnostic, restorative, sterilization, and photography products for dentists. Fast WhatsApp ordering."
+keywords = "dental supplies, dentist equipment, dental products, dental cart, order dental supplies, dental instruments, dental materials, dental clinic supplies, dental consumables, dental diagnostic tools, restorative dental materials, dental sterilization, dental photography equipment"
+author = "Dental Cart"
+site_url = "https://USERNAME.github.io/REPO/"
+local_business_type = "HealthAndBeautyBusiness"
+business_name = "Dental Cart"
+business_phone = "+201271476215"
+business_email = "info@dentalcart.com"
+business_address = "Cairo, Egypt"
+business_hours = "Mo-Fr 09:00-17:00"
+service_area = "Egypt, Middle East, North Africa"
+
+# Dental-specific SEO keywords by category
+[params.seo.keywords]
+diagnostic = "dental diagnostic tools, dental mirrors, dental explorer probes, dental examination instruments, intraoral mirrors, dental diagnostic equipment"
+restorative = "dental restorative materials, dental composites, dental etching gel, dental bonding, dental fillings, composite resin, dental adhesives, restorative dentistry"
+sterilization = "dental sterilization equipment, sterilization pouches, dental disinfectants, autoclave supplies, dental infection control, medical sterilization, dental hygiene products"
+photography = "dental photography equipment, intraoral mirrors, cheek retractors, dental cameras, dental imaging, clinical photography, dental documentation"
+
+# Long-tail keywords for better targeting
+[params.seo.longtail]
+general = "order dental supplies online Egypt, dental equipment supplier Middle East, dentist consumables delivery, dental clinic supplies Cairo, dental materials wholesale"
+diagnostic = "buy dental mirrors online, dental explorer probe price, intraoral examination tools, dental diagnostic instruments Egypt"
+restorative = "dental composite resin supplier, dental etching gel 37%, light cure composite, dental restorative materials online"
+sterilization = "dental sterilization pouches bulk, surface disinfectant for dental clinics, autoclave supplies Egypt, dental infection control products"
+photography = "dental photography mirrors, cheek retractors for dentistry, intraoral photography set, dental imaging equipment"
+
 [params.message]
 greeting_en = "Hello,"
 intro_en = "I would like to place the following dental supplies order:"
@@ -50,6 +80,7 @@ id = "diag-001"
 category = "Diagnostic"
 name_en = "Mouth Mirror No. 5"
 description_en = "Front-surface mirror for clear intraoral visibility during examination."
+alt_text = "Dental mouth mirror No. 5 - Front-surface diagnostic mirror for clear intraoral examination visibility"
 image = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgNjQwIDQwMCI+PHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0MDAiIGZpbGw9IiNFQUYyRkYiLz48Y2lyY2xlIGN4PSIyNjAiIGN5PSIxNzAiIHI9Ijg4IiBmaWxsPSIjRkZGIiBzdHJva2U9IiMyNjQ2NTMiIHN0cm9rZS13aWR0aD0iMTYiLz48cmVjdCB4PSIzMzAiIHk9IjIxMCIgd2lkdGg9IjE5MCIgaGVpZ2h0PSIyNiIgcng9IjEzIiBmaWxsPSIjMjY0NjUzIi8+PHRleHQgeD0iMzIiIHk9IjM2OCIgc3R5bGU9ImZvbnQtZmFtaWx5OiBBcmlhbCwgc2Fucy1zZXJpZjtmb250LXNpemU6MjRweDtmaWxsOiMyNjQ2NTMiPkRpYWdub3N0aWM8L3RleHQ+PC9zdmc+"
 
 [[params.products]]
@@ -57,6 +88,7 @@ id = "diag-002"
 category = "Diagnostic"
 name_en = "Explorer Probe"
 description_en = "Fine-tip explorer for caries detection and margin evaluation."
+alt_text = "Dental explorer probe - Fine-tip diagnostic instrument for caries detection and margin evaluation"
 image = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgNjQwIDQwMCI+PHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0MDAiIGZpbGw9IiNFQUYyRkYiLz48cGF0aCBkPSJNMTEwIDI2MCBDMjAwIDIxMCAyODAgMTg0IDM2MCAxNjggQzQ0MCAxNTIgNTA0IDEzMCA1NDUgOTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzI2NDY1MyIgc3Ryb2tlLXdpZHRoPSIxNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHJlY3QgeD0iOTAiIHk9IjI1MCIgd2lkdGg9IjE3MCIgaGVpZ2h0PSIzNiIgcng9IjE4IiBmaWxsPSIjMjY0NjUzIi8+PHRleHQgeD0iMzIiIHk9IjM2OCIgc3R5bGU9ImZvbnQtZmFtaWx5OiBBcmlhbCwgc2Fucy1zZXJpZjtmb250LXNpemU6MjRweDtmaWxsOiMyNjQ2NTMiPkRpYWdub3N0aWM8L3RleHQ+PC9zdmc+"
 
 [[params.products]]
@@ -64,6 +96,7 @@ id = "rest-001"
 category = "Restorative"
 name_en = "Universal Composite (A2)"
 description_en = "Light-cure composite with excellent handling for anterior/posterior restorations."
+alt_text = "Universal Composite A2 - Light-cure dental composite for anterior and posterior restorations"
 image = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgNjQwIDQwMCI+PHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0MDAiIGZpbGw9IiNFOUZBRjAiLz48cmVjdCB4PSIxNjAiIHk9IjExMCIgd2lkdGg9IjMyMCIgaGVpZ2h0PSIxNzAiIHJ4PSIyMCIgZmlsbD0iI0ZGRiIgc3Ryb2tlPSIjMUYyOTM3IiBzdHJva2Utd2lkdGg9IjEyIi8+PHJlY3QgeD0iMjAwIiB5PSIxNjAiIHdpZHRoPSIyNDAiIGhlaWdodD0iNjAiIHJ4PSIxMiIgZmlsbD0iIzFGMjkzNyIvPjx0ZXh0IHg9IjMyIiB5PSIzNjgiIHN0eWxlPSJmb250LWZhbWlseTogQXJpYWwsIHNhbnMtc2VyaWY7Zm9udC1zaXplOjI0cHg7ZmlsbDojMUYyOTM3Ij5SZXN0b3JhdGl2ZTwvdGV4dD48L3N2Zz4="
 
 [[params.products]]
@@ -71,6 +104,7 @@ id = "rest-002"
 category = "Restorative"
 name_en = "Etching Gel 37%"
 description_en = "Controlled-viscosity phosphoric acid gel for enamel/dentin etching."
+alt_text = "Etching Gel 37% - Controlled-viscosity phosphoric acid gel for enamel and dentin etching"
 image = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgNjQwIDQwMCI+PHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0MDAiIGZpbGw9IiNFOUZBRjAiLz48cGF0aCBkPSJNMjQwIDEwMCBoMTYwIHYyNjAgYzAgMjAtMTYgMzYtMzYgMzZoLTg4Yy0yMCAwLTM2LTE2LTM2LTM2VjEwMCBaIiBmaWxsPSIjRkZGIiBzdHJva2U9IiMxRjI5MzciIHN0cm9rZS13aWR0aD0iMTIiLz48cmVjdCB4PSIyNjAiIHk9IjE1MCIgd2lkdGg9IjEyMCIgaGVpZ2h0PSI1MCIgcng9IjEwIiBmaWxsPSIjMUYyOTM3Ii8+PHRleHQgeD0iMzIiIHk9IjM2OCIgc3R5bGU9ImZvbnQtZmFtaWx5OiBBcmlhbCwgc2Fucy1zZXJpZjtmb250LXNpemU6MjRweDtmaWxsOiMxRjI5MzciPlJlc3RvcmF0aXZlPC90ZXh0Pjwvc3ZnPg=="
 
 [[params.products]]
@@ -78,6 +112,7 @@ id = "ster-001"
 category = "Sterilization"
 name_en = "Sterilization Pouch (200 pcs)"
 description_en = "Medical-grade self-seal pouches with process indicators for autoclave cycles."
+alt_text = "Sterilization Pouch 200 pieces - Medical-grade self-seal pouches with process indicators for autoclave sterilization"
 image = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgNjQwIDQwMCI+PHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0MDAiIGZpbGw9IiNGRkY3RUQiLz48cmVjdCB4PSIxNzAiIHk9IjkwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIyMCIgcng9IjE2IiBmaWxsPSIjRkZGIiBzdHJva2U9IiM0MzM4Q0EiIHN0cm9rZS13aWR0aD0iMTIiLz48cmVjdCB4PSIxODAiIHk9IjExMCIgd2lkdGg9IjI4MCIgaGVpZ2h0PSI3MCIgcng9IjEyIiBmaWxsPSIjNDMzOENBIiBvcGFjaXR5PSIwLjE1Ii8+PHRleHQgeD0iMzIiIHk9IjM2OCIgc3R5bGU9ImZvbnQtZmFtaWx5OiBBcmlhbCwgc2Fucy1zZXJpZjtmb250LXNpemU6MjRweDtmaWxsOiM0MzM4Q0EiPlN0ZXJpbGl6YXRpb248L3RleHQ+PC9zdmc+"
 
 [[params.products]]
@@ -85,6 +120,7 @@ id = "ster-002"
 category = "Sterilization"
 name_en = "Surface Disinfectant (1L)"
 description_en = "Fast-acting disinfectant for clinical surfaces; suitable for daily use."
+alt_text = "Surface Disinfectant 1 Liter - Fast-acting disinfectant for clinical surfaces and daily dental clinic use"
 image = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgNjQwIDQwMCI+PHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0MDAiIGZpbGw9IiNGRkY3RUQiLz48cmVjdCB4PSIyNjAiIHk9IjkwIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjI2MCIgcng9IjIwIiBmaWxsPSIjRkZGIiBzdHJva2U9IiM0MzM4Q0EiIHN0cm9rZS13aWR0aD0iMTIiLz48cmVjdCB4PSIyNzQiIHk9IjE0MCIgd2lkdGg9IjkyIiBoZWlnaHQ9IjYwIiByeD0iMTIiIGZpbGw9IiM0MzM4Q0EiIG9wYWNpdHk9IjAuMTUiLz48Y2lyY2xlIGN4PSIzMjAiIGN5PSIyODAiIHI9IjQwIiBmaWxsPSIjNDMzOENBIiBvcGFjaXR5PSIwLjI1Ii8+PHRleHQgeD0iMzIiIHk9IjM2OCIgc3R5bGU9ImZvbnQtZmFtaWx5OiBBcmlhbCwgc2Fucy1zZXJpZjtmb250LXNpemU6MjRweDtmaWxsOiM0MzM4Q0EiPlN0ZXJpbGl6YXRpb248L3RleHQ+PC9zdmc+"
 
 [[params.products]]
@@ -92,6 +128,7 @@ id = "photo-001"
 category = "Photography"
 name_en = "Cheek Retractors (Pair)"
 description_en = "Comfortable retractors for consistent intraoral photography and isolation."
+alt_text = "Cheek Retractors Pair - Comfortable retractors for consistent intraoral photography and dental isolation"
 image = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgNjQwIDQwMCI+PHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0MDAiIGZpbGw9IiNGRkVGRjEiLz48cGF0aCBkPSJNMjA1IDE5MCBjLTYwIDAtOTUgMzgtOTUgODQgMCA0NiAzNSA4NCA5NSA4NCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjODAwMDIwIiBzdHJva2Utd2lkdGg9IjE2IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJNNDM1IDE5MCBjNjAgMCA5NSAzOCA5NSA4NCAwIDQ2LTM1IDg0LTk1IDg0IiBmaWxsPSJub25lIiBzdHJva2U9IiM4MDAwMjAiIHN0cm9rZS13aWR0aD0iMTYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjx0ZXh0IHg9IjMyIiB5PSIzNjgiIHN0eWxlPSJmb250LWZhbWlseTogQXJpYWwsIHNhbnMtc2VyaWY7Zm9udC1zaXplOjI0cHg7ZmlsbDojODAwMDIwIj5QaG90b2dyYXBoeTwvdGV4dD48L3N2Zz4="
 
 [[params.products]]
@@ -99,4 +136,5 @@ id = "photo-002"
 category = "Photography"
 name_en = "Intraoral Mirrors (Set)"
 description_en = "Rhodium-coated mirrors for crisp reflection and color accuracy in photos."
+alt_text = "Intraoral Mirrors Set - Rhodium-coated mirrors for crisp reflection and color accuracy in dental photography"
 image = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgNjQwIDQwMCI+PHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0MDAiIGZpbGw9IiNGRkVGRjEiLz48Y2lyY2xlIGN4PSIzMDAiIGN5PSIxNzAiIHI9Ijg4IiBmaWxsPSIjRkZGIiBzdHJva2U9IiM4MDAwMjAiIHN0cm9rZS13aWR0aD0iMTYiLz48cGF0aCBkPSJNMzk0IDI0MiBsOTQgNjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzgwMDAyMCIgc3Ryb2tlLXdpZHRoPSIxNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHRleHQgeD0iMzIiIHk9IjM2OCIgc3R5bGU9ImZvbnQtZmFtaWx5OiBBcmlhbCwgc2Fucy1zZXJpZjtmb250LXNpemU6MjRweDtmaWxsOiM4MDAwMjAiPlBob3RvZ3JhcGh5PC90ZXh0Pjwvc3ZnPg=="
