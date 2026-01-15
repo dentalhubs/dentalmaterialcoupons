@@ -6,7 +6,7 @@
   <meta name="color-scheme" content="light" />
   <title>Dental Cart</title>
   <link id="favicon" rel="icon" type="image/svg+xml" />
-  <meta name="google-site-verification" content="LafDgouJAxGdO2Baf4oCW9LwphxpCnVDdX90hA50F7I" id="googleSearchConsole" />
+  <meta name="google-site-verification" content="LafDgouJAxGdO2Baf4oCW9LwphxpCnVDdX90hA50F7I" />
   
   <!-- SEO Meta Tags -->
   <meta name="description" content="" id="seoDescription" />
@@ -837,13 +837,6 @@
         if (favicon) {
           const faviconEl = el("favicon");
           faviconEl.href = favicon;
-        }
-
-        // Apply Google Search Console verification
-        const gsc = safeText(state.config?.params?.google_search_console);
-        if (gsc) {
-          const gscEl = el("googleSearchConsole");
-          gscEl.content = gsc;
         }
 
         // Apply SEO meta tags
