@@ -4,9 +4,11 @@ title = "Dental Supplies Order"
 disableKinds = ["taxonomy", "term", "RSS", "sitemap", "robotsTXT", "404"]
 
 [params]
-whatsapp_phone = "201234567890"
+whatsapp_phone = "201271476215"
 default_language = "en"
 supported_languages = ["en"]
+favicon = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIGZpbGw9IiMwZjFiMzMiLz48dGV4dCB4PSIxNiIgeT0iMjAiIHN0eWxlPSJmb250LWZhbWlseTogQXJpYWwsIHNhbnMtc2VyaWY7Zm9udC1zaXplOjE4cHg7ZmlsbDojNGRkNGFjO3RleHQtYW5jaG9yOm1pZGRsZTtkb21pbmFudC1iYXNlbGluZTphdXRvIj7wnrE8L3RleHQ+PC9zdmc+"
+google_search_console = ""
 
 [params.message]
 greeting_en = "Hello,"
