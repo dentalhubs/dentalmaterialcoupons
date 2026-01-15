@@ -7,6 +7,23 @@
   <title>Dental Cart</title>
   <link id="favicon" rel="icon" type="image/svg+xml" />
   <meta name="google-site-verification" content="" id="googleSearchConsole" />
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="" id="seoDescription" />
+  <meta name="keywords" content="" id="seoKeywords" />
+  <meta name="author" content="" id="seoAuthor" />
+  <meta property="og:title" content="" id="ogTitle" />
+  <meta property="og:description" content="" id="ogDescription" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="" id="ogUrl" />
+  <meta property="og:image" content="" id="ogImage" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="" id="twitterTitle" />
+  <meta name="twitter:description" content="" id="twitterDescription" />
+  <meta name="twitter:image" content="" id="twitterImage" />
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json" id="structuredData"></script>
   <style>
     :root{
       --bg:#0b1220;
@@ -389,6 +406,10 @@
         return safeText(p.name_en);
       }
 
+      function productAltText(p){
+        return safeText(p.alt_text || productName(p));
+      }
+
       function productDesc(p){
         return safeText(p.description_en);
       }
@@ -523,7 +544,7 @@
           card.className = "card";
 
           const img = document.createElement("img");
-          img.alt = productName(p);
+          img.alt = productAltText(p);
           img.src = safeText(p.image);
           card.appendChild(img);
 
@@ -593,7 +614,7 @@
           wrap.className = "cart-item";
 
           const img = document.createElement("img");
-          img.alt = productName(p);
+          img.alt = productAltText(p);
           img.src = safeText(p.image);
 
           const right = document.createElement("div");
@@ -767,6 +788,45 @@
         window.open(url, "_blank", "noopener,noreferrer");
       }
 
+      function applyStructuredData(){
+        const seo = state.config?.params?.seo || {};
+        const products = state.config?.params?.products || [];
+        
+        const structuredData = {
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "name": seo.business_name || "Dental Cart",
+          "description": seo.description || "Dental supplies ordering platform",
+          "url": seo.site_url,
+          "telephone": seo.business_phone,
+          "email": seo.business_email,
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": seo.business_address
+          },
+          "openingHours": seo.business_hours,
+          "areaServed": seo.service_area,
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Dental Supplies Catalog",
+            "itemListElement": products.map((p, index) => ({
+              "@type": "Offer",
+              "position": index + 1,
+              "itemOffered": {
+                "@type": "Product",
+                "name": productName(p),
+                "description": productDesc(p),
+                "category": safeText(p.category),
+                "image": safeText(p.image)
+              }
+            }))
+          }
+        };
+
+        const structuredDataEl = el("structuredData");
+        structuredDataEl.textContent = JSON.stringify(structuredData, null, 2);
+      }
+
       function applyLanguage(){
         document.documentElement.lang = state.lang;
         el("brandText").textContent = t("brand");
@@ -785,6 +845,35 @@
           const gscEl = el("googleSearchConsole");
           gscEl.content = gsc;
         }
+
+        // Apply SEO meta tags
+        const seo = state.config?.params?.seo || {};
+        if (seo.title) {
+          document.title = seo.title;
+          el("ogTitle").content = seo.title;
+          el("twitterTitle").content = seo.title;
+        }
+        if (seo.description) {
+          el("seoDescription").content = seo.description;
+          el("ogDescription").content = seo.description;
+          el("twitterDescription").content = seo.description;
+        }
+        if (seo.keywords) {
+          el("seoKeywords").content = seo.keywords;
+        }
+        if (seo.author) {
+          el("seoAuthor").content = seo.author;
+        }
+        if (seo.site_url) {
+          el("ogUrl").content = seo.site_url;
+        }
+        if (favicon) {
+          el("ogImage").content = favicon;
+          el("twitterImage").content = favicon;
+        }
+
+        // Apply structured data
+        applyStructuredData();
 
         el("headline").textContent = t("headline");
         el("vpFast").textContent = t("value_fast");
